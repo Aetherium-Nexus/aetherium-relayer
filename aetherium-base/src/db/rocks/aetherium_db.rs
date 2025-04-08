@@ -87,12 +87,12 @@ impl AetheriumRocksDB {
         dispatched_block_number: u64,
     ) -> DbResult<bool> {
         if let Ok(Some(_)) = self.retrieve_message_id_by_nonce(&message.nonce) {
-            trace!(hyp_message=?message, "Message already stored in db");
+            trace!(aet_message=?message, "Message already stored in db");
             return Ok(false);
         }
 
         let id = message.id();
-        debug!(hyp_message=?message,  "Storing new message in db",);
+        debug!(aet_message=?message,  "Storing new message in db",);
 
         // - `id` --> `message`
         self.store_message_by_id(&id, message)?;
