@@ -526,7 +526,7 @@ impl PendingOperation for PendingMessage {
             actual_gas_for_message = ?gas_used_by_operation,
             message_gas_estimate = ?operation_estimate,
             submission_gas_estimate = ?submission_estimated_cost,
-            hyp_message = ?self.message,
+            aet_message = ?self.message,
             "Gas used by message submission"
         );
     }
