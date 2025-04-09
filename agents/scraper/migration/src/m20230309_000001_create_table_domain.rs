@@ -576,7 +576,7 @@ impl MigrationTrait for Migration {
 #[derive(Iden)]
 pub enum Domain {
     Table,
-    /// Hyperlane domain ID
+    /// Aetherium domain ID
     Id,
     /// Time of record creation
     TimeCreated,

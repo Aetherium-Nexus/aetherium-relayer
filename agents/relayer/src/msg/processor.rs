@@ -169,7 +169,7 @@ impl DirectionalNonceIterator {
         if let Some(message) = self.indexed_message_with_nonce()? {
             Self::update_max_nonce_gauge(&message, metrics);
             if !self.is_message_processed()? {
-                debug!(hyp_message=?message, iterator=?self, "Found processable message");
+                debug!(aet_message=?message, iterator=?self, "Found processable message");
                 return Ok(MessageStatus::Processable(message));
             } else {
                 return Ok(MessageStatus::Processed);

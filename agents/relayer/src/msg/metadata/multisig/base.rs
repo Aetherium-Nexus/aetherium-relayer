@@ -118,7 +118,7 @@ impl<T: MultisigIsmMetadataBuilder> MetadataBuilder for T {
             return Err(MetadataBuildError::CouldNotFetch);
         }
 
-        info!(hyp_message=?message, ?validators, threshold, "List of validators and threshold for message");
+        info!(aet_message=?message, ?validators, threshold, "List of validators and threshold for message");
 
         let checkpoint_syncer = match self
             .as_ref()
@@ -146,14 +146,14 @@ impl<T: MultisigIsmMetadataBuilder> MetadataBuilder for T {
             .context(CTX)
             .map_err(|_| MetadataBuildError::CouldNotFetch)?
         {
-            debug!(hyp_message=?message, ?metadata.checkpoint, "Found checkpoint with quorum");
+            debug!(aet_message=?message, ?metadata.checkpoint, "Found checkpoint with quorum");
             let formatted = self
                 .format_metadata(metadata)
                 .map_err(|_| MetadataBuildError::CouldNotFetch)?;
             Ok(Metadata::new(formatted))
         } else {
             info!(
-                hyp_message=?message, ?validators, threshold, ism=%multisig_ism.address(),
+                aet_message=?message, ?validators, threshold, ism=%multisig_ism.address(),
                 "Could not fetch metadata: Unable to reach quorum"
             );
             Err(MetadataBuildError::CouldNotFetch)

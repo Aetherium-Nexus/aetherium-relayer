@@ -73,7 +73,7 @@ pub enum Cursor {
     Table,
     /// Unique database ID
     Id,
-    /// Hyperlane domain ID the cursor is for
+    /// Aetherium domain ID the cursor is for
     Domain,
     /// Time when the record was created
     TimeCreated,

@@ -160,7 +160,7 @@ impl BuildsBaseMetadata for BaseMetadataBuilder {
             .await?;
 
         debug!(
-            hyp_message=?message,
+            aet_message=?message,
             ?validators,
             validators_len = ?validators.len(),
             ?storage_locations,
@@ -170,7 +170,7 @@ impl BuildsBaseMetadata for BaseMetadataBuilder {
         // Only use the most recently announced location for now.
         let mut checkpoint_syncers: HashMap<H160, Arc<dyn CheckpointSyncer>> = HashMap::new();
         for (&validator, validator_storage_locations) in validators.iter().zip(storage_locations) {
-            debug!(hyp_message=?message, ?validator, ?validator_storage_locations, "Validator and its storage locations for message");
+            debug!(aet_message=?message, ?validator, ?validator_storage_locations, "Validator and its storage locations for message");
             for storage_location in validator_storage_locations.iter().rev() {
                 let Ok(config) = CheckpointSyncerConf::from_str(storage_location) else {
                     debug!(

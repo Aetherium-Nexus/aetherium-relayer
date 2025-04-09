@@ -112,7 +112,7 @@ impl GasPaymentEnforcer {
         for (policy, whitelist) in &self.policies {
             if !whitelist.msg_matches(message, true) {
                 trace!(
-                    hyp_message=%message,
+                    aet_message=%message,
                     ?policy,
                     ?whitelist,
                     "Message did not match whitelist for policy"
@@ -121,13 +121,13 @@ impl GasPaymentEnforcer {
             }
 
             trace!(
-                hyp_message=%message,
+                aet_message=%message,
                 ?policy,
                 ?whitelist,
                 "Message matched whitelist for policy"
             );
             debug!(
-                hyp_message=%message,
+                aet_message=%message,
                 ?policy,
                 ?current_payment,
                 ?current_expenditure,
@@ -161,7 +161,7 @@ impl GasPaymentEnforcer {
         }
 
         error!(
-            hyp_message=%message,
+            aet_message=%message,
             policies=?self.policies,
             "No gas payment policy matched for message; consider adding a default policy to the end of the policies array which uses a wildcard whitelist."
         );
@@ -171,7 +171,7 @@ impl GasPaymentEnforcer {
     pub fn record_tx_outcome(&self, message: &AetheriumMessage, outcome: TxOutcome) -> Result<()> {
         // This log is required in E2E, hence the use of a `const`
         debug!(
-            hyp_message=%message,
+            aet_message=%message,
             ?outcome,
             "{}",
             GAS_EXPENDITURE_LOG_MESSAGE,
