@@ -135,7 +135,6 @@ impl<T: Signable + Debug> Debug for SignedType<T> {
     }
 }
 
-// Copied from https://github.com/aetherium-xyz/ethers-rs/blob/aetherium/ethers-core/src/utils/hash.rs
 // so that we can get EIP-191 hashing without the `ethers` feature
 mod hashes {
     const PREFIX: &str = "\x19Ethereum Signed Message:\n";
