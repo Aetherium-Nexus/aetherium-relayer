@@ -1,0 +1,57 @@
+[package]
+name = "aetherium-sealevel"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow.workspace = true
+async-trait.workspace = true
+base64.workspace = true
+bincode.workspace = true
+borsh.workspace = true
+derive-new.workspace = true
+jsonrpc-core.workspace = true
+lazy_static.workspace = true
+maplit.workspace = true
+num-traits.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+solana-account-decoder.workspace = true
+solana-client.workspace = true
+solana-program.workspace = true
+solana-sdk.workspace = true
+solana-transaction-status.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing-futures.workspace = true
+tracing.workspace = true
+url.workspace = true
+
+account-utils = { path = "../../../sealevel/libraries/account-utils" }
+aetherium-core = { path = "../../aetherium-core", features = [
+    "solana",
+    "async",
+] }
+aetherium-metric = { path = "../../aetherium-metric" }
+aetherium-operation-verifier = { path = "../../applications/aetherium-operation-verifier" }
+aetherium-sealevel-interchain-security-module-interface = { path = "../../../sealevel/libraries/interchain-security-module-interface" }
+aetherium-sealevel-mailbox = { path = "../../../sealevel/programs/mailbox", features = [
+    "no-entrypoint",
+] }
+aetherium-sealevel-igp = { path = "../../../sealevel/programs/aetherium-sealevel-igp", features = [
+    "no-entrypoint",
+] }
+aetherium-sealevel-message-recipient-interface = { path = "../../../sealevel/libraries/message-recipient-interface" }
+aetherium-sealevel-multisig-ism-message-id = { path = "../../../sealevel/programs/ism/multisig-ism-message-id", features = [
+    "no-entrypoint",
+] }
+aetherium-sealevel-validator-announce = { path = "../../../sealevel/programs/validator-announce", features = [
+    "no-entrypoint",
+] }
+aetherium-warp-route = { path = "../../applications/aetherium-warp-route" }
+multisig-ism = { path = "../../../sealevel/libraries/multisig-ism" }
+serializable-account-meta = { path = "../../../sealevel/libraries/serializable-account-meta" }
+
+[dev-dependencies]
+rstest.workspace = true
