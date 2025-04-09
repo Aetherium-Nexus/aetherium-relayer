@@ -1,0 +1,50 @@
+
+[package]
+name = "validator"
+documentation.workspace = true
+edition.workspace = true
+homepage.workspace = true
+license-file.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+axum.workspace = true
+chrono.workspace = true
+config.workspace = true
+console-subscriber.workspace = true
+derive_more.workspace = true
+derive-new.workspace = true
+ethers.workspace = true
+eyre.workspace = true
+futures.workspace = true
+futures-util.workspace = true
+prometheus.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["rt", "macros", "parking_lot"] }
+tracing-futures.workspace = true
+tracing.workspace = true
+
+aetherium-core = { path = "../../aetherium-core", features = [
+    "agent",
+    "async",
+] }
+aetherium-base = { path = "../../aetherium-base" }
+aetherium-ethereum = { path = "../../chains/aetherium-ethereum" }
+aetherium-cosmos = { path = "../../chains/aetherium-cosmos" }
+
+[dev-dependencies]
+mockall.workspace = true
+tokio-test.workspace = true
+reqwest.workspace = true
+aetherium-test = { path = "../../aetherium-test" }
+k256.workspace = true
+aetherium-ethereum = { path = "../../chains/aetherium-ethereum", features = ["test-utils"] }
+
+[features]
+default = ["color-eyre", "oneline-errors"]
+oneline-errors = ["aetherium-base/oneline-errors"]
+color-eyre = ["aetherium-base/color-eyre"]

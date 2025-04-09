@@ -1,0 +1,74 @@
+
+[package]
+name = "relayer"
+documentation.workspace = true
+edition.workspace = true
+homepage.workspace = true
+license-file.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[dependencies]
+async-trait.workspace = true
+axum.workspace = true
+chrono.workspace = true
+config.workspace = true
+console-subscriber.workspace = true
+convert_case.workspace = true
+ctrlc = { workspace = true, features = ["termination"], optional = true }
+derive-new.workspace = true
+derive_more.workspace = true
+dhat = { workspace = true, optional = true }
+ethers-contract.workspace = true
+ethers.workspace = true
+eyre.workspace = true
+futures.workspace = true
+futures-util.workspace = true
+itertools.workspace = true
+num-derive.workspace = true
+num-traits.workspace = true
+prometheus.workspace = true
+rand.workspace = true
+regex.workspace = true
+reqwest = { workspace = true, features = ["json"] }
+serde.workspace = true
+serde_json.workspace = true
+strum.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = [
+    "rt",
+    "macros",
+    "parking_lot",
+    "rt-multi-thread",
+] }
+tokio-metrics.workspace = true
+tracing-futures.workspace = true
+tracing.workspace = true
+typetag.workspace = true
+uuid.workspace = true
+
+aetherium-base = { path = "../../aetherium-base", features = ["test-utils"] }
+aetherium-core = { path = "../../aetherium-core", features = [
+    "agent",
+    "async",
+] }
+aetherium-ethereum = { path = "../../chains/aetherium-ethereum" }
+aetherium-operation-verifier = { path = "../../applications/aetherium-operation-verifier" }
+
+[dev-dependencies]
+axum = { workspace = true, features = ["macros"] }
+once_cell.workspace = true
+mockall.workspace = true
+tokio-test.workspace = true
+tracing-test.workspace = true
+aetherium-test = { path = "../../aetherium-test" }
+aetherium-base = { path = "../../aetherium-base", features = ["test-utils"] }
+aetherium-core = { path = "../../aetherium-core", features = ["agent", "async", "test-utils"] }
+ethers-prometheus = { path = "../../ethers-prometheus", features = ["serde"] }
+
+[features]
+default = ["color-eyre", "oneline-errors"]
+oneline-errors = ["aetherium-base/oneline-errors"]
+color-eyre = ["aetherium-base/color-eyre"]
+test-utils = ["aetherium-base/test-utils"]
+memory-profiling = ["dep:ctrlc", "dep:dhat"]
