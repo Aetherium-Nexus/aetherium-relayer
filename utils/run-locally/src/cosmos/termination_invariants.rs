@@ -51,7 +51,6 @@ pub fn termination_invariants_met(
 
     // Make sure the balance was correctly updated in the metrics.
     // Ideally, make sure that the difference is >= gas_per_tx * gas_cost, set here:
-    // https://github.com/aetherium-xyz/aetherium-monorepo/blob/c2288eb31734ba1f2f997e2c6ecb30176427bc2c/rust/utils/run-locally/src/cosmos/cli.rs#L55
     // What's stopping this is that the format returned by the `uosmo` balance query is a surprisingly low number (0.000003999999995184)
     // but then maybe the gas_per_tx is just very low - how can we check that? (maybe by simulating said tx)
     if starting_relayer_balance <= ending_relayer_balance {
