@@ -7,10 +7,10 @@ metadata:
 data:
   ONELINE_BACKTRACES: "true"
   RUST_BACKTRACE: {{ .Values.aetherium.rustBacktrace }}
-  HYP_DB: {{ .Values.aetherium.dbPath }}
-  HYP_LOG_FORMAT: {{ .Values.aetherium.tracing.format }}
-  HYP_LOG_LEVEL: {{ .Values.aetherium.tracing.level }}
+  AET_DB: {{ .Values.aetherium.dbPath }}
+  AET_LOG_FORMAT: {{ .Values.aetherium.tracing.format }}
+  AET_LOG_LEVEL: {{ .Values.aetherium.tracing.level }}
   {{- range .Values.aetherium.chains }}
 {{- include "agent-common.config-env-vars" (dict "config" . "key_name_prefix" (printf "chains_%s_" .name) "format" "config_map") | indent 2 }}
   {{- end }}
-  HYP_METRICSPORT: {{ .Values.aetherium.metrics.port | quote }}
+  AET_METRICSPORT: {{ .Values.aetherium.metrics.port | quote }}
